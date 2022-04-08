@@ -205,7 +205,7 @@ void read_sub(char* sub_dir, char *name, char *mmin, char *inum, char *action)
 						printf("Deleted File");
 					}
 				}
-				else if(name == NULL && mmin == NULL && inum == NULL)
+				else if(name == NULL && mmin == NULL && inum == "NULL")
 				{
 					printf("%s\n",temp_full_path);
 					if(strcmp(action, "delete") == 0) 
