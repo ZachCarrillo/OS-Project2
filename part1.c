@@ -1,8 +1,7 @@
 /*
- * This program implements a simple version of the UNIX find utility
- * Input: ./part1 -w <directory> -n <specific name> -i <inode> -m <mminm> -a <action>
- -n -i and -m are mutually exclisive (you can usde multiple at once but code probably wont work)
- * Output: print all the file which match the criteria
+ * 
+ * Input: ./part1 testdir
+ * Output: print all the files
  */
 
 #include <stdio.h>
@@ -91,7 +90,7 @@ main(int argc, char **argv)
 		name = NULL;
 		n = 1;
 	}
-	// if there is no specified mmin set it to NULL
+	// if there is no specified mmin set it to "+0" (all files will count)
 	if (m!=1)
 	{
 		mmin = NULL;
@@ -182,37 +181,27 @@ void read_sub(char* sub_dir, char *name, char *mmin, char *inum, char *action)
 				{
 					printf("Found Name: %s\n",temp_full_path);
 					if(strcmp(action, "delete") == 0) 
-					{
 						remove(temp_full_path);
-						printf("Deleted File\n");
-					}
 				}
 				else if(mmin != NULL && ((mmin[0] == '+' && bufmmin>atoi(mmin)) || mmin[0] == '-' && bufmmin < abs(atoi(mmin)) || bufmmin == atoi(mmin))) //check mmin
 				{
 					printf("Correct mmin :%s\n",temp_full_path);
 					if(strcmp(action, "delete") == 0) 
-					{
 						remove(temp_full_path);
-						printf("Deleted File\n");
-					}
 				}
+				/*
 				else if(bufinum == atoi(inum)) //check inum (UNIX only)
 				{
 					printf("Same inum: %s\n",temp_full_path);
 					if(strcmp(action, "delete") == 0) 
-					{
 						remove(temp_full_path);
-						printf("Deleted File\n");
-					}
 				}
+				*/
 				else if(name == NULL && mmin == NULL && inum == NULL)
 				{
 					printf("%s\n",temp_full_path);
 					if(strcmp(action, "delete") == 0) 
-					{
 						remove(temp_full_path);
-						printf("Deleted File\n");
-					}
 				}
 			}
         }
