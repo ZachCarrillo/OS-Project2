@@ -196,7 +196,7 @@ void read_sub(char* sub_dir, char *name, char *mmin, char *inum, char *action)
 						printf("Deleted File");
 					}
 				}
-				else if(bufinum == &inum) //check inum (UNIX only)
+				else if(bufinum == atoi(inum)) //check inum (UNIX only)
 				{
 					printf("Same inum: %s\n",temp_full_path);
 					if(strcmp(action, "delete") == 0) 
