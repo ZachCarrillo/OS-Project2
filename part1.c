@@ -97,10 +97,10 @@ main(int argc, char **argv)
 		mmin = NULL;
 		m = 1;
 	}
-	// if there is no specified inum set it to NULL
+	// if there is no specified inum set it to "NULL" setting it to NULL makes segmentation fault with atoi()
 	if (i!=1)
 	{
-		inum = NULL;
+		inum = "NULL";
 		i = 1;
 	}
 	// if there is no specified action set it to NULL
